@@ -59,7 +59,7 @@ fi
 #
 # CONSTANTS
 #
-MONGO_CONN="--host ${DBHOST} --port ${DBPORT} --username ${DBUSER} --password ${DBPASS} --authenticationDatabase admin --gzip --archive=${DUMPFILE}"
+MONGO_CONN="--host ${DBHOST} --port ${DBPORT} --username ${DBUSER} --password ${DBPASS} --authenticationDatabase admin --drop --gzip --archive=${DUMPFILE}"
 MONGO_RESTORE="${MONGORESTORE} $MONGO_CONN"
 
 if [[ -f ${DUMPFILE} ]]; then
