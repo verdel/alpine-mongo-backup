@@ -9,9 +9,9 @@ if [ "$1" = "backup" ]; then
   
 elif [ "$1" = "restore" ]; then
   if [ -z "$2" ]; then
-    exec /sbin/mongo-restore.sh -h $BACKUP_DB_HOST -P $BACKUP_DB_PORT -u $BACKUP_DB_USER -p $BACKUP_DB_PASS
+    exec /sbin/mongo-restore.sh -h $BACKUP_DB_HOST -P $BACKUP_DB_PORT -d $BACKUP_DB_NAME -u $BACKUP_DB_USER -p $BACKUP_DB_PASS
   else
-    exec /sbin/mongo-restore.sh -h $BACKUP_DB_HOST -P $BACKUP_DB_PORT -u $BACKUP_DB_USER -p $BACKUP_DB_PASS -i $2
+    exec /sbin/mongo-restore.sh -h $BACKUP_DB_HOST -P $BACKUP_DB_PORT -d $BACKUP_DB_NAME -u $BACKUP_DB_USER -p $BACKUP_DB_PASS -i $2
   fi
 fi
 

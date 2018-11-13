@@ -19,6 +19,7 @@ USAGE
 OPTIONS
      -h host      - hostname/IP of Mongo server (default: $DBHOST)
      -P port      - port of Mongo server (default: $DBPORT)
+     -d database  - Graylog2 database name (default: $DBNAME)
      -u user      - Mongo backup user (default: $DBUSER)
      -p password  - Mongo backup user password (specify "-" for a prompt)
      -i inputfile - input gzip Mongo archive file
@@ -34,10 +35,11 @@ fi
 #
 # PARSE COMMAND LINE ARGUMENTS
 #
-while getopts ":h:d:u:p:i:" opt; do
+while getopts ":h:P:d:u:p:i:" opt; do
   case $opt in
     h)  DBHOST="$OPTARG" ;;
     P)  DBPORT="$OPTARG" ;;
+    d)  DBNAME="$OPTARG" ;;
     u)  DBUSER="$OPTARG" ;;
     p)  DBPASS="$OPTARG" ;;
     i)  DUMPFILE="$OPTARG" ;;
@@ -59,7 +61,7 @@ fi
 #
 # CONSTANTS
 #
-MONGO_CONN="--host ${DBHOST} --port ${DBPORT} --username ${DBUSER} --password ${DBPASS} --authenticationDatabase admin --drop --gzip --archive=${DUMPFILE}"
+MONGO_CONN="--host ${DBHOST} --port ${DBPORT} --username ${DBUSER} --password ${DBPASS} --authenticationDatabase ${DBNAME} --db ${DBNAME} --drop --gzip --archive=${DUMPFILE}"
 MONGO_RESTORE="${MONGORESTORE} $MONGO_CONN"
 
 if [[ -f ${DUMPFILE} ]]; then

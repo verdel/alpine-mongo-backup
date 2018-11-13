@@ -63,7 +63,7 @@ fi
 DUMPFILEBASE="${DBNAME}_$(date +%Y%m%d-%H%M).gz"
 DUMPFILE="${DUMPDIR}/${DUMPFILEBASE}"
 
-MONGO_CONN="--host ${DBHOST} --port ${DBPORT} --username ${DBUSER} --password ${DBPASS} --authenticationDatabase admin --db ${DBNAME} --gzip --archive=${DUMPFILE}"
+MONGO_CONN="--host ${DBHOST} --port ${DBPORT} --username ${DBUSER} --password ${DBPASS} --authenticationDatabase ${DBNAME} --db ${DBNAME} --gzip --archive=${DUMPFILE}"
 MONGO_DUMP="${MONGODUMP} $MONGO_CONN"
 
 #
